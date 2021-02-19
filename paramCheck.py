@@ -9,7 +9,6 @@ if (param == '')  or (value == ''):
     exit()
 
 paramExist = 0
-fileError = 0
 with open(fn) as file_obj:
     obj_list = file_obj.readlines()
 
@@ -21,17 +20,15 @@ for line in obj_list:
         obj_list.pop(index)  
     if  (line != '\n') and ('=' not in line):
         print("File type error.")
-        fileError = 1
-        break
+        exit()
     if param in line:
         paramExist = 1
         obj_list[index] = param + '=' + value + '\n'
     index += 1    
 
-if fileError == 0 and paramExist == 0:
+if paramExist == 0:
     obj_list.append('\n' + param + '=' + value)  
 
 #print(obj_list)
-if fileError == 0:
-    with open(fn, 'w') as file_obj:
-        file_obj.writelines(obj_list)
+with open(fn, 'w') as file_obj:
+    file_obj.writelines(obj_list)
