@@ -1,0 +1,7 @@
+class=apple
+name=vicky
+number=12
+gender=girl
+birthday=0623
+date=20201215
+age=3
